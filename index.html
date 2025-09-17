@@ -351,13 +351,24 @@
         .app-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
             border-radius: 20px;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .app-icon.default {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
         }
 
         .app-card h3 {
@@ -381,9 +392,41 @@
             margin-bottom: 1rem;
         }
 
-        .app-status.coming-soon {
+        .app-status.published {
             background: rgba(0, 255, 136, 0.2);
             color: var(--accent-green);
+        }
+
+        .app-status.coming-soon {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffaa00;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .app-link:hover {
+            border-color: var(--accent-green);
+            background: var(--bg-hover);
+            transform: translateY(-1px);
         }
 
         .tech-stack {
@@ -549,6 +592,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .app-links {
+                flex-direction: column;
+            }
         }
 
         /* Scroll animations */
@@ -601,20 +648,33 @@
             
             <div class="apps-grid">
                 <div class="app-card fade-in">
-                    <div class="app-icon">🧩</div>
-                    <div class="app-status">Próximamente</div>
+                    <div class="app-icon">
+                        <!-- Aquí irá el logo de Sudoku Mind -->
+                        <img src="images/sudoku-mind-logo.png" alt="Sudoku Mind Logo" onerror="this.style.display='none'; this.parentElement.classList.add('default'); this.parentElement.innerHTML='🧩';">
+                    </div>
+                    <div class="app-status published">Publicado</div>
                     <h3>Sudoku Mind</h3>
-                    <p>El clásico juego de Sudoku reimaginado con una interfaz moderna y elegante. Múltiples niveles de dificultad y características únicas para desafiar tu mente.</p>
+                    <p>El mejor Sudoku gratuito para Android. Juego clásico con 4 niveles de dificultad, rankings globales y sin anuncios molestos. Perfecto para entrenar tu mente diariamente.</p>
+                    
+                    <div class="app-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.rmind.sudoku" target="_blank" class="app-link">
+                            📱 Google Play
+                        </a>
+                        <a href="#" class="app-link" style="opacity: 0.6; pointer-events: none;">
+                            🍎 App Store (Próximamente)
+                        </a>
+                    </div>
                     
                     <div class="tech-stack">
                         <span class="tech-tag">Flutter</span>
                         <span class="tech-tag">Dart</span>
                         <span class="tech-tag">Material Design</span>
+                        <span class="tech-tag">Cloud Storage</span>
                     </div>
                 </div>
 
                 <div class="app-card fade-in">
-                    <div class="app-icon">🚀</div>
+                    <div class="app-icon default">🚀</div>
                     <div class="app-status coming-soon">En desarrollo</div>
                     <h3>Próxima App</h3>
                     <p>Estamos trabajando en nuevas ideas innovadoras. Mantente atento para conocer nuestro próximo proyecto que combinará entretenimiento y tecnología.</p>
